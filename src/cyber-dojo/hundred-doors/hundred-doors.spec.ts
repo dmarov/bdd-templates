@@ -1,8 +1,8 @@
-import { HundredDoors } from './100-doors';
+import { HundredDoors } from './hundred-doors';
 import { DoorState } from './door-state';
 import { ProblemParams } from './problem-params';
 
-describe('100 doors', () => {
+describe('hundred doors', () => {
   it('should return correct answer for 1 door and 0 iterations', () => {
     const params: ProblemParams = {
       numberOfDoors: 1,
