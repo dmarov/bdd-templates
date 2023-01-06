@@ -5,3 +5,9 @@ The third time, every 3rd door (door #3, #6, #9, ...), etc, until you only visit
 Question: What state are the doors in after the last pass? Which are open, which are closed?
 
 [Source http://rosettacode.org]
+
+# Run
+
+```
+npx ts-node src/cyber-dojo/100doors/index.ts
+```

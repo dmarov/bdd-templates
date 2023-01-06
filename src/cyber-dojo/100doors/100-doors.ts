@@ -4,7 +4,6 @@ import { ProblemParams } from './problem-params';
 
 export class HundredDoors {
   private static toogleDoor(doorState: DoorState, index: number, span: number): DoorState {
-
     if (index % span === 0) {
       return doorState === DoorState.Closed ? DoorState.Open : DoorState.Closed;
     }
@@ -13,9 +12,7 @@ export class HundredDoors {
   }
 
   private static generateInitialModel(numberOfDoors: number): DoorsSet {
-    return Array.from({
-      length: numberOfDoors,
-    }).map(() => DoorState.Closed);
+    return Array.from({ length: numberOfDoors }).map(() => DoorState.Closed);
   }
 
   private static next(model: DoorsSet, span: number): DoorsSet {
