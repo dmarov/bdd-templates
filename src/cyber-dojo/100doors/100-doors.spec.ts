@@ -25,7 +25,7 @@ describe('100 doors', () => {
     expect(solution).toEqual([DoorState.Closed, DoorState.Closed]);
   });
 
-  it('should return correct answer for 1 door1 and 1 iteration', () => {
+  it('should return correct answer for 1 door and 1 iteration', () => {
     const params: ProblemParams = {
       numberOfDoors: 1,
       numberOfIterations: 1,
@@ -34,5 +34,16 @@ describe('100 doors', () => {
     const solution = HundredDoors.resolve(params);
 
     expect(solution).toEqual([DoorState.Open]);
+  });
+
+  it('should return correct answer for 2 doors and 2 iteration', () => {
+    const params: ProblemParams = {
+      numberOfDoors: 2,
+      numberOfIterations: 2,
+    };
+
+    const solution = HundredDoors.resolve(params);
+
+    expect(solution).toEqual([DoorState.Open, DoorState.Closed]);
   });
 });

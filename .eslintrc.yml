@@ -20,3 +20,4 @@ overrides:
       - PropertyDefinition[decorators]
       - TSUnionType
     class-methods-use-this: off
+    "@typescript-eslint/no-explicit-any": error
