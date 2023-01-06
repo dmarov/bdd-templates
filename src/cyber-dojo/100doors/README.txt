@@ -6,8 +6,6 @@ Question: What state are the doors in after the last pass? Which are open, which
 
 [Source http://rosettacode.org]
 
-# Run
+Run:
 
-```
 npx ts-node src/cyber-dojo/100doors/index.ts
-```
