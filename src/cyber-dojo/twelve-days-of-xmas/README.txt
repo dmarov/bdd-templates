@@ -119,3 +119,6 @@ A partridge in a pear tree.
 
 [Source https://rosettacode.org]
 
+Run:
+
+npx ts-node src/cyber-dojo/twelve-days-of-xmas/index.ts

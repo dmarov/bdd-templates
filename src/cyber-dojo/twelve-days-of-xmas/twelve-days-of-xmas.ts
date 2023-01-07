@@ -3,7 +3,7 @@ export class TwelveDaysOfXmas {
     return `On the ${day} day of Christmas\nMy true love gave to me:`;
   }
 
-  private static days = [
+  private static readonly days = [
     'first',
     'second',
     'third',
@@ -18,7 +18,7 @@ export class TwelveDaysOfXmas {
     'twelfth',
   ];
 
-  private static lines = [
+  private static readonly lines = [
     'A partridge in a pear tree.',
     'Two turtle doves and',
     'Three french hens',
@@ -34,20 +34,20 @@ export class TwelveDaysOfXmas {
   ];
 
   private static generateVerse(index: number): string {
-    const intro = `${this.generateIntro(this.days[index])}\n`;
+    const intro = this.generateIntro(this.days[index]);
     const lines: string[] = [];
 
     for (let i = index; i >= 0; i -= 1) {
       lines.push(this.lines[i]);
     }
 
-    return intro + lines.join('\n');
+    return `${intro}\n${lines.join('\n')}`;
   }
 
   static generateLyrics(): string {
     const verses: string[] = [];
 
-    for (let i = 0; i <= 11; i += 1) {
+    for (let i = 0; i < this.days.length; i += 1) {
       verses.push(this.generateVerse(i));
     }
 

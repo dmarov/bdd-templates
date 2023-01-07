@@ -8,4 +8,4 @@ Question: What state are the doors in after the last pass? Which are open, which
 
 Run:
 
-npx ts-node src/cyber-dojo/100doors/index.ts
+npx ts-node src/cyber-dojo/hundred-doors/index.ts
