@@ -50,3 +50,7 @@ True
 
 [Source https://rosettacode.org/wiki/ABC_Problem]
 
+Run:
+
+npx ts-node src/cyber-dojo/abc-problem/index.ts
+
