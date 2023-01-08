@@ -43,6 +43,19 @@ const f3 = (x: number) => {
   }
 }
 
-const f4 = ...
+...
+
+const f10 = (x: number) => {
+  switch (x % 2^10) {
+    case 0:
+      return (1 / 2^10) * x + (0 / 1);
+    case 1:
+      ...
+    case 2:
+      ...
+    case 1023:
+      ...
+  }
+}
 
 For given `n` print `fn`.
