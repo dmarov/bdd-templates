@@ -19,5 +19,6 @@ overrides:
     - ignoredNodes:
       - PropertyDefinition[decorators]
       - TSUnionType
+      SwitchCase: 1
     class-methods-use-this: off
     "@typescript-eslint/no-explicit-any": error
