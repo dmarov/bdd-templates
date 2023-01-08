@@ -43,6 +43,6 @@ const f3 = (x: number) => {
   }
 }
 
-const f3 = ...
+const f4 = ...
 
 For given `n` print `fn`.
