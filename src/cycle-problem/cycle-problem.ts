@@ -11,9 +11,9 @@ export class CycleProblem {
     case 3:
       return (3 / 2) * x + (1 / 2);
     case 2:
-      return (3 / 2) * x + 1;
+      return (3 / 2) * x + (1 / 1);
     default:
-      return x / 4;
+      return (1 / 4) * x + (0 / 1);
   }
 }`;
   }

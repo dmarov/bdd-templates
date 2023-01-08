@@ -8,7 +8,7 @@ const fn = (x: number) => {
     default:
       return (1 / 2) * x + (0 / 1);
   }
-}`
+}`;
 
 const result = CycleProblem.resolve(fn, 10);
 
