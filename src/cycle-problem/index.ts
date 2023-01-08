@@ -20,6 +20,3 @@ const fn = (x: number) => {
       return (1 / 2) * x + (0 / 1);
   }
 };
-
-console.log(fn(1));
-console.log(fn(2));
