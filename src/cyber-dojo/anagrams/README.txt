@@ -7,3 +7,6 @@ ibro ibor irbo irob iobr iorb
 rbio rboi ribo riob roib robi
 obir obri oibr oirb orbi orib
 
+Run:
+
+npx ts-node src/cyber-dojo/anagrams/index.ts
