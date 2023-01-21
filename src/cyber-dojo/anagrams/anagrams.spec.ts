@@ -1,6 +1,6 @@
 import { Anagrams } from './anagrams';
 
-describe('align columns', () => {
+describe('anagrams', () => {
   it('should return correct result for one letter word', () => {
     const input = 'a';
 
