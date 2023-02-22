@@ -11,11 +11,13 @@ export class ArrayTransformGenerator {
     const arr = Array.from({ length }).map((v, i) => i);
 
     for (let i = 0; i < arr.length - 1; i += 1) {
-      const k = rangeGen.generate(i + 1, arr.length);
+      const k = rangeGen.generate(i, arr.length);
 
-      const buf = arr[i];
-      arr[i] = arr[k];
-      arr[k] = buf;
+      if (k !== i) {
+        const buf = arr[i];
+        arr[i] = arr[k];
+        arr[k] = buf;
+      }
     }
 
     return arr;
