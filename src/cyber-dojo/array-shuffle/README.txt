@@ -17,3 +17,6 @@ The shuffle function
   o) the returned array is randomly shuffled!
   o) the returned array is a permutation of the array argument
 
+Run:
+
+npx ts-node src/cyber-dojo/array-shuffle/index.ts

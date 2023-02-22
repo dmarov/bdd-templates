@@ -1,13 +1,13 @@
-import { Generator } from './generator';
+import { NormalizedGenerator } from './normalized-generator';
 
-export class FromSequenceGenerator implements Generator {
+export class FromSequenceGenerator implements NormalizedGenerator {
   private i = 0;
 
   constructor(
     private readonly sequence: number[],
   ) {
     this.sequence.forEach((i) => {
-      if (i < 0 || i > 1) {
+      if (i < 0 || i >= 1) {
         throw new Error('invalid argument');
       }
     });
