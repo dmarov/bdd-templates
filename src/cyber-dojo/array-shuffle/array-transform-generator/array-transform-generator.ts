@@ -10,14 +10,12 @@ export class ArrayTransformGenerator {
     const rangeGen = new RangeGenerator(this.generator());
     const arr = Array.from({ length }).map((v, i) => i);
 
-    for (let i = 0; i < arr.length; i += 1) {
-      for (let j = i; j < arr.length; j += 1) {
-        const k = rangeGen.generate(j, arr.length);
+    for (let i = 0; i < arr.length - 1; i += 1) {
+      const k = rangeGen.generate(i + 1, arr.length);
 
-        const buf = arr[k];
-        arr[k] = arr[j];
-        arr[j] = buf;
-      }
+      const buf = arr[i];
+      arr[i] = arr[k];
+      arr[k] = buf;
     }
 
     return arr;
