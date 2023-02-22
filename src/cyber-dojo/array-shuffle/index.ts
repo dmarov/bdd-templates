@@ -1,7 +1,7 @@
 import { ArrayShuffle } from './array-shuffle/array-shuffle';
 import { MathGenerator } from './normalized-generators/math';
 
-const steps = 1000;
+const steps = 10000;
 const totals = Array.from({ length: 100 }).map(() => 0);
 
 for (let i = 0; i < steps; i += 1) {
@@ -13,5 +13,9 @@ for (let i = 0; i < steps; i += 1) {
     totals[k] += result[k];
   }
 }
+
+totals.forEach((v, i) => {
+  totals[i] = v / steps;
+});
 
 console.log(totals);
