@@ -1,9 +1,11 @@
+import { Generator } from './generators/generator';
+
 export class Random {
   constructor(
-    private readonly normalizedGenerator: () => number,
+    private readonly generator: Generator,
   ) { }
 
   generate(min: number, max: number): number {
-    return (this.normalizedGenerator() * (max - min)) + min;
+    return (this.generator.generate() * (max - min)) + min;
   }
 }

@@ -1,8 +1,8 @@
 import { ArrayShuffle } from './array-shuffle';
-import { mathGenerator } from './generators';
+import { MathGenerator } from './generators/math';
 
 const array = [1, 2, 3, 4, 5];
-const instance = new ArrayShuffle(mathGenerator);
+const instance = new ArrayShuffle(new MathGenerator());
 
 const result = instance.shuffle(array);
 

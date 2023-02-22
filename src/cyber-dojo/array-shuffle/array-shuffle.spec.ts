@@ -1,23 +1,9 @@
 import { ArrayShuffle } from './array-shuffle';
-import { dummyAlmostOneGenerator, dummyZeroGenerator } from './generators';
+import { FromSequenceGenerator } from './generators/from-sequence';
 
 describe('array shuffle', () => {
-  const variants2 = [
-    [1, 2],
-    [2, 1],
-  ];
-
-  const variants3 = [
-    [1, 2, 3],
-    [2, 3, 1],
-    [3, 1, 2],
-    [2, 1, 3],
-    [1, 3, 2],
-    [3, 2, 1],
-  ];
-
   it('should work correctly for array of one element using "dummy zero generator"', () => {
-    const generator = dummyZeroGenerator;
+    const generator = new FromSequenceGenerator([0]);
     const instance = new ArrayShuffle(generator);
     const input = [1];
 
@@ -29,7 +15,7 @@ describe('array shuffle', () => {
   });
 
   it('should work correctly for array of two elements using "dummy almost one generator"', () => {
-    const generator = dummyAlmostOneGenerator;
+    const generator = new FromSequenceGenerator([0.9999]);
     const instance = new ArrayShuffle(generator);
     const input = [1, 2];
 
@@ -41,7 +27,7 @@ describe('array shuffle', () => {
   });
 
   it('should work correctly for array of three elements using "dummy almost one generator"', () => {
-    const generator = dummyAlmostOneGenerator;
+    const generator = new FromSequenceGenerator([0.9999]);
     const instance = new ArrayShuffle(generator);
     const input = [1, 2, 3];
 

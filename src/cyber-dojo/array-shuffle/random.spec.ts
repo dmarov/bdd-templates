@@ -1,4 +1,4 @@
-import { dummyAlmostOneGenerator, dummyZeroGenerator } from './generators';
+import { FromSequenceGenerator } from './generators/from-sequence';
 import { Random } from './random';
 
 describe('random', () => {
@@ -6,7 +6,7 @@ describe('random', () => {
   const max = 5;
 
   it('should return value less than maximum', () => {
-    const rnd = new Random(dummyAlmostOneGenerator);
+    const rnd = new Random(new FromSequenceGenerator([0.9999]));
 
     const result = rnd.generate(min, max);
 
@@ -14,7 +14,7 @@ describe('random', () => {
   });
 
   it('should return value greater than or equal to minimum', () => {
-    const rnd = new Random(dummyZeroGenerator);
+    const rnd = new Random(new FromSequenceGenerator([0]));
 
     const result = rnd.generate(min, max);
 
