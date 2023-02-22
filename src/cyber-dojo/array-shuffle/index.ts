@@ -1,7 +1,7 @@
 import { ArrayShuffle } from './array-shuffle/array-shuffle';
 import { MathGenerator } from './normalized-generators/math';
 
-const steps = 10000;
+const steps = 100000;
 const totals = Array.from({ length: 100 }).map(() => 0);
 
 for (let i = 0; i < steps; i += 1) {
