@@ -1,5 +1,5 @@
 import { FromSequenceGenerator } from '../normalized-generators/from-sequence';
-import { RangeIntegerGenerator } from './range-generator';
+import { RangeIntegerGenerator } from './range-integer-generator';
 
 describe('random', () => {
   const min = 1;

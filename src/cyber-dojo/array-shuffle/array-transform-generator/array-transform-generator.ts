@@ -1,5 +1,5 @@
 import { NormalizedGenerator } from '../normalized-generators/normalized-generator';
-import { RangeIntegerGenerator } from '../range-generator/range-generator';
+import { RangeIntegerGenerator } from '../range-integer-generator/range-integer-generator';
 
 export class ArrayTransformGenerator {
   constructor(
