@@ -1,6 +1,6 @@
 import { NormalizedGenerator } from '../normalized-generators/normalized-generator';
 
-export class RangeGenerator {
+export class RangeIntegerGenerator {
   constructor(
     private readonly generator: NormalizedGenerator,
   ) { }

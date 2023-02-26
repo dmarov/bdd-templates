@@ -1,5 +1,5 @@
 import { NormalizedGenerator } from '../normalized-generators/normalized-generator';
-import { RangeGenerator } from '../range-generator/range-generator';
+import { RangeIntegerGenerator } from '../range-generator/range-generator';
 
 export class ArrayTransformGenerator {
   constructor(
@@ -7,7 +7,7 @@ export class ArrayTransformGenerator {
   ) { }
 
   generate(length: number): number[] {
-    const rangeGen = new RangeGenerator(this.generator());
+    const rangeGen = new RangeIntegerGenerator(this.generator());
     const arr = Array.from({ length }).map((v, i) => i);
 
     for (let i = 0; i < arr.length - 1; i += 1) {

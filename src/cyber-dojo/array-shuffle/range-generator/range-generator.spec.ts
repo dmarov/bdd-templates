@@ -1,12 +1,12 @@
 import { FromSequenceGenerator } from '../normalized-generators/from-sequence';
-import { RangeGenerator } from './range-generator';
+import { RangeIntegerGenerator } from './range-generator';
 
 describe('random', () => {
   const min = 1;
   const max = 5;
 
   it('should return value less than maximum', () => {
-    const rnd = new RangeGenerator(new FromSequenceGenerator([0.9999]));
+    const rnd = new RangeIntegerGenerator(new FromSequenceGenerator([0.9999]));
 
     const result = rnd.generate(min, max);
 
@@ -14,7 +14,7 @@ describe('random', () => {
   });
 
   it('should return value greater than or equal to minimum', () => {
-    const rnd = new RangeGenerator(new FromSequenceGenerator([0]));
+    const rnd = new RangeIntegerGenerator(new FromSequenceGenerator([0]));
 
     const result = rnd.generate(min, max);
 
@@ -22,7 +22,7 @@ describe('random', () => {
   });
 
   it('should return rounded integer', () => {
-    const rnd = new RangeGenerator(new FromSequenceGenerator([0.9999]));
+    const rnd = new RangeIntegerGenerator(new FromSequenceGenerator([0.9999]));
 
     const result = rnd.generate(0, 1);
 
