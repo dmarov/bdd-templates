@@ -18,7 +18,7 @@ export class FromSequenceGenerator implements NormalizedGenerator {
       throw new Error('out of range');
     }
 
-    const res = this.sequence[this.i] ?? 0;
+    const res = this.sequence[this.i];
     this.i += 1;
 
     return res;
