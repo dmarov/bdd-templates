@@ -14,6 +14,10 @@ export class FromSequenceGenerator implements NormalizedGenerator {
   }
 
   generate(): number {
+    if (this.i >= this.sequence.length) {
+      throw new Error('out of range');
+    }
+
     const res = this.sequence[this.i] ?? 0;
     this.i += 1;
 

@@ -3,7 +3,7 @@ import { FromSequenceGenerator } from '../normalized-generators/from-sequence';
 
 describe('array transform generator', () => {
   it('should generate array of specified length', () => {
-    const gen = new ArrayTransformGenerator(() => new FromSequenceGenerator([]));
+    const gen = new ArrayTransformGenerator(() => new FromSequenceGenerator([0]));
 
     const result = gen.generate(1);
 
@@ -11,7 +11,7 @@ describe('array transform generator', () => {
   });
 
   it('should generate array which includes 0', () => {
-    const gen = new ArrayTransformGenerator(() => new FromSequenceGenerator([]));
+    const gen = new ArrayTransformGenerator(() => new FromSequenceGenerator([0]));
 
     const result = gen.generate(2);
 
@@ -19,7 +19,7 @@ describe('array transform generator', () => {
   });
 
   it('should generate array which includes 1', () => {
-    const gen = new ArrayTransformGenerator(() => new FromSequenceGenerator([]));
+    const gen = new ArrayTransformGenerator(() => new FromSequenceGenerator([0]));
 
     const result = gen.generate(2);
 
@@ -27,7 +27,7 @@ describe('array transform generator', () => {
   });
 
   it('should generate mirror transformation', () => {
-    const gen = new ArrayTransformGenerator(() => new FromSequenceGenerator([]));
+    const gen = new ArrayTransformGenerator(() => new FromSequenceGenerator([0]));
 
     const result = gen.generate(2);
 

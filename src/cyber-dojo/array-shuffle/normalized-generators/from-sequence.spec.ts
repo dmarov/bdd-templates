@@ -29,9 +29,10 @@ describe('from sequence generator', () => {
     }).toThrowError('invalid argument');
   });
 
-  it('should return 0 after being out of values', () => {
-    const generator = new FromSequenceGenerator([]);
-
-    expect(generator.generate()).toEqual(0);
+  it('should throw error after being out of values', () => {
+    expect(() => {
+      const generator = new FromSequenceGenerator([]);
+      generator.generate();
+    }).toThrowError('out of range');
   });
 });
