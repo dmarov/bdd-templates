@@ -6,7 +6,7 @@ import { TestCase } from './test-case';
 
 /** TODO
  * MVP
- * 1. should have status before run
+ * 1. should have "not ran" state before run
  * 2. should invoke test method
  * 3. should assert equal boolean values
  * 4. should assert unequal boolean values
@@ -17,19 +17,20 @@ import { TestCase } from './test-case';
 
 /** TODO
  * Extra features
- * 1. should have descriptive test invocation result if test with boolean assertion succeeded
- * 1. should fail test with no assertions
- * 2. run test suite
- * 3. generalize assert equal to all types
- * 4. implement file system test watcher/runner
+ * 1. improve assert functions
+ * 2. should have descriptive test invocation result if test with boolean assertion succeeded
+ * 3. should fail test with no assertions
+ * 4. run test suite
+ * 5. generalize assert equal to all types
+ * 6. implement file system test watcher/runner
  */
 
-const tests = [
+export const tests = [
   new TestCase('should have "no ran" state before run', () => {
     const testCase = new TestCase('should be dummy', () => {});
 
     if (testCase.getInvocationDetails().state !== TestCaseState.NotRan) {
-      throw new Error('should have status before run failed');
+      throw new Error('should have "not ran" state before run failed');
     }
   }),
 
@@ -115,20 +116,3 @@ const tests = [
     }
   }),
 ];
-
-let success = true;
-
-tests.forEach((t) => {
-  t.run();
-
-  const details = t.getInvocationDetails();
-
-  if (details.state !== TestCaseState.Succeeded) {
-    success = false;
-    console.log(`Failed test: ${details.name}\nError name: ${details.error?.name}\nError message: ${details.error?.message}`);
-  }
-});
-
-if (!success) {
-  process.exit(1);
-}
