@@ -4,8 +4,8 @@ import { TestCase } from './test-case';
 /** TODO
  * MVP
  * 1. should have failed state if error occured
- * 3. should have succeeded state if no error occured
- * 5. should have "not ran" state before test has been ran
+ * 2. should have succeeded state if no error occured
+ * 3. should have "not ran" state before test has been ran
  */
 
 /** TODO
@@ -18,7 +18,7 @@ import { TestCase } from './test-case';
  * 6. implement file system test watcher/runner
  */
 
-export const tests = [
+const essentialTests: ReadonlyArray<TestCase> = [
   new TestCase('should have failed state if error occured', () => {
     const testCase = new TestCase('should throw error', () => {
       throw new Error('this is error');
@@ -61,3 +61,9 @@ export const tests = [
     }
   }),
 ];
+
+const extraTests: ReadonlyArray<TestCase> = [
+
+];
+
+export const tests: ReadonlyArray<TestCase> = [...essentialTests, ...extraTests];
