@@ -1,4 +1,4 @@
-import { assertBooleanEqual } from './assertions/assert-boolean-equal';
+import { assertTrue } from './assertions/assert-true';
 import { NonAssertRelatedError } from './errors/non-assert-related-error';
 import { TestCaseError } from './errors/test-case-error';
 import { TestCaseState } from './models/test-case-state';
@@ -64,7 +64,7 @@ export const tests = [
 
   new TestCase('should assert equal boolean values', () => {
     const testCase = new TestCase('should assert true equal true', () => {
-      assertBooleanEqual(true, true);
+      assertTrue(true);
     });
 
     testCase.run();
@@ -76,7 +76,7 @@ export const tests = [
 
   new TestCase('should assert unequal boolean values', () => {
     const testCase = new TestCase('should assert true equal false', () => {
-      assertBooleanEqual(true, false);
+      assertTrue(false);
     });
 
     testCase.run();
@@ -88,7 +88,7 @@ export const tests = [
 
   new TestCase('should have no error present in case of success', () => {
     const testCase = new TestCase('should assert true equal true', () => {
-      assertBooleanEqual(true, true);
+      assertTrue(true);
     });
 
     testCase.run();
@@ -102,7 +102,7 @@ export const tests = [
 
   new TestCase('should have error of correct type set on error', () => {
     const testCase = new TestCase('should assert true equal false', () => {
-      assertBooleanEqual(true, false);
+      assertTrue(false);
     });
 
     testCase.run();
