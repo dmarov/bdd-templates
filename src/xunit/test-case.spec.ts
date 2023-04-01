@@ -25,18 +25,18 @@ import { TestCase } from './test-case';
  */
 
 const tests = [
-  new TestCase('should verify "should have "no ran" state before run" test succeeded', () => {
-    const testCase = new TestCase('should have "no ran" state before run', () => {});
+  new TestCase('should have "no ran" state before run', () => {
+    const testCase = new TestCase('should be dummy', () => {});
 
     if (testCase.getInvocationDetails().state !== TestCaseState.NotRan) {
       throw new Error('should have status before run failed');
     }
   }),
 
-  new TestCase('should verify "should invoke test method" test succeeded', () => {
+  new TestCase('should invoke test method', () => {
     let success = false;
 
-    const testCase = new TestCase('should invoke test method', () => {
+    const testCase = new TestCase('should set flag to true', () => {
       success = true;
     });
 
@@ -47,8 +47,8 @@ const tests = [
     }
   }),
 
-  new TestCase('should verify "should assert equal boolean values" test succeeded', () => {
-    const testCase = new TestCase('should assert equal boolean values', () => {
+  new TestCase('should assert equal boolean values', () => {
+    const testCase = new TestCase('should assert true equal true', () => {
       assertBooleanEqual(true, true);
     });
 
@@ -59,8 +59,8 @@ const tests = [
     }
   }),
 
-  new TestCase('should verify "should assert unequal boolean values" test succeeded', () => {
-    const testCase = new TestCase('should assert unequal boolean values', () => {
+  new TestCase('should assert unequal boolean values', () => {
+    const testCase = new TestCase('should assert true equal false', () => {
       assertBooleanEqual(true, false);
     });
 
@@ -71,8 +71,8 @@ const tests = [
     }
   }),
 
-  new TestCase('should verify "should have no error present in case of success" test succeeded', () => {
-    const testCase = new TestCase('should have no error present in case of success', () => {
+  new TestCase('should have no error present in case of success', () => {
+    const testCase = new TestCase('should assert true equal true', () => {
       assertBooleanEqual(true, true);
     });
 
@@ -85,8 +85,8 @@ const tests = [
     }
   }),
 
-  new TestCase('should verify "should have error of correct type set on error" test succeeded', () => {
-    const testCase = new TestCase('should have error of correct type set on error', () => {
+  new TestCase('should have error of correct type set on error', () => {
+    const testCase = new TestCase('should assert true equal false', () => {
       assertBooleanEqual(true, false);
     });
 
@@ -99,10 +99,10 @@ const tests = [
     }
   }),
 
-  new TestCase('should verify "should have non assert-related error if non assert-related error occured" test succeeded', () => {
+  new TestCase('should have non assert-related error if non assert-related error occured', () => {
     const externalError = new Error('this is non assert-related error');
 
-    const testCase = new TestCase('should have non assert-related error if non assert-related error occured', () => {
+    const testCase = new TestCase('should throw non assert-related error', () => {
       throw externalError;
     });
 
@@ -125,12 +125,10 @@ tests.forEach((t) => {
 
   if (details.state !== TestCaseState.Succeeded) {
     success = false;
-    console.log(`Failed test: ${details.name}\nError: ${details.error?.name}`);
+    console.log(`Failed test: ${details.name}\nError name: ${details.error?.name}\nError message: ${details.error?.message}`);
   }
 });
 
 if (!success) {
-  throw new Error('failed');
+  process.exit(1);
 }
-
-console.log('success!!!');
