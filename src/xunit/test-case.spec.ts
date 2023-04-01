@@ -4,10 +4,11 @@ import { TestCase } from './test-case';
 
 /** TODO
  * MVP
- * 1. should failed state if error occured
+ * 1. should have failed state if error occured
  * 2. should have error of correct type if error occured
  * 3. should have succeeded state if no error occured
  * 4. should have no error if no error occured
+ * 5. should have "not ran" state before test has been ran
  */
 
 /** TODO
@@ -74,6 +75,20 @@ export const tests = [
 
     if (!(error instanceof TestCaseError)) {
       throw new Error('should have no error if no error occured failed');
+    }
+  }),
+
+  new TestCase('should have "not ran" state before test has been ran', () => {
+    const testCase = new TestCase('should throw error', () => {
+
+    });
+
+    const { state } = testCase.getInvocationDetails();
+
+    testCase.run();
+
+    if (state !== TestCaseState.NotRan) {
+      throw new Error('should have "not ran" state before test has been ran failed');
     }
   }),
 ];
