@@ -51,7 +51,7 @@ export const tests = [
   }),
 
   new TestCase('should have succeeded state if no error occured', () => {
-    const testCase = new TestCase('should throw error', () => {
+    const testCase = new TestCase('should be dummy', () => {
 
     });
 
@@ -79,7 +79,7 @@ export const tests = [
   }),
 
   new TestCase('should have "not ran" state before test has been ran', () => {
-    const testCase = new TestCase('should throw error', () => {
+    const testCase = new TestCase('should be dummy', () => {
 
     });
 
