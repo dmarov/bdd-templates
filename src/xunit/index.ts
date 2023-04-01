@@ -6,18 +6,12 @@ let success = true;
 tests.forEach((t) => {
   t.run();
 
-  const details = t.getInvocationDetails();
+  const state = t.getState();
+  const name = t.getName();
 
-  if (details.state !== TestCaseState.Succeeded) {
+  if (state !== TestCaseState.Succeeded) {
     success = false;
-    console.log(`
-Failed test:
-${details.name}
-Error name:
-${details.error?.name}
-Error message:
-${details.error?.message}
-`);
+    console.log(`Failed test: ${name}`);
   }
 });
 

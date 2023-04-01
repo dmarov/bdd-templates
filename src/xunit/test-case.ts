@@ -1,16 +1,7 @@
-import { TestCaseError } from './errors/test-case-error';
 import { TestCaseState } from './models/test-case-state';
-
-interface RunInfo {
-  name: string;
-  state: TestCaseState;
-  error: TestCaseError | null;
-}
 
 export class TestCase {
   private state: TestCaseState = TestCaseState.NotRan;
-
-  private error: Error | null = null;
 
   constructor(
     private readonly name: string,
@@ -23,18 +14,14 @@ export class TestCase {
       this.state = TestCaseState.Succeeded;
     } catch (e) {
       this.state = TestCaseState.Failed;
-
-      if (e instanceof Error) {
-        this.error = e;
-      }
     }
   }
 
-  getInvocationDetails(): RunInfo {
-    return {
-      name: this.name,
-      state: this.state,
-      error: this.error,
-    };
+  getState(): TestCaseState {
+    return this.state;
+  }
+
+  getName(): string {
+    return this.name;
   }
 }
