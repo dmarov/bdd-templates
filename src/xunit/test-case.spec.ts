@@ -16,9 +16,7 @@ const mvpTests: ReadonlyArray<TestCase> = [
 
     testCase.run();
 
-    const state = testCase.getState();
-
-    if (state !== TestCaseState.Failed) {
+    if (testCase.getState() !== TestCaseState.Failed) {
       throw new Error('should have failed state if error occured failed');
     }
   }),
@@ -30,9 +28,7 @@ const mvpTests: ReadonlyArray<TestCase> = [
 
     testCase.run();
 
-    const state = testCase.getState();
-
-    if (state !== TestCaseState.Succeeded) {
+    if (testCase.getState() !== TestCaseState.Succeeded) {
       throw new Error('should have succeeded state if no error occured');
     }
   }),
@@ -71,9 +67,7 @@ const extraTests: ReadonlyArray<TestCase> = [
 
     testCase.run();
 
-    const state = testCase.getState();
-
-    if (state !== TestCaseState.Succeeded) {
+    if (testCase.getState() !== TestCaseState.Succeeded) {
       throw new Error('should have succeeded state after assert true equal true failed');
     }
   }),
@@ -85,9 +79,7 @@ const extraTests: ReadonlyArray<TestCase> = [
 
     testCase.run();
 
-    const state = testCase.getState();
-
-    if (state !== TestCaseState.Failed) {
+    if (testCase.getState() !== TestCaseState.Failed) {
       throw new Error('should have failed state after assert true equal false failed');
     }
   }),
