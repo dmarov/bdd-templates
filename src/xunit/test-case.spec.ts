@@ -26,7 +26,7 @@ import { TestCase } from './test-case';
  */
 
 export const tests = [
-  new TestCase('should have "no ran" state before run', () => {
+  new TestCase('should have "not ran" state before run', () => {
     const testCase = new TestCase('should be dummy', () => {});
 
     if (testCase.getInvocationDetails().state !== TestCaseState.NotRan) {
