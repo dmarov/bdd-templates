@@ -50,8 +50,7 @@ export const tests = [
 
   new TestCase('should have non assert-related error if non assert-related error occured', () => {
     const testCase = new TestCase('should throw non assert-related error', () => {
-      const nonAssertRelatedError = new Error('this is non assert-related error');
-      throw nonAssertRelatedError;
+      throw new Error('this is non assert-related error');
     });
 
     testCase.run();
