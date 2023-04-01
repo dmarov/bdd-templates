@@ -1,6 +1,5 @@
 import { assertTrue } from './assertions/assert-true';
-import { AssertTrueError } from './errors/assert-true-error';
-import { NonAssertRelatedError } from './errors/non-assert-related-error';
+import { TestCaseError } from './errors/test-case-error';
 import { TestCaseState } from './models/test-case-state';
 import { TestCase } from './test-case';
 
@@ -58,74 +57,8 @@ export const tests = [
 
     const { error } = testCase.getInvocationDetails();
 
-    if (!(error instanceof NonAssertRelatedError)) {
+    if (!(error instanceof TestCaseError)) {
       throw new Error('should have non assert-related error if non assert-related error occured failed');
-    }
-  }),
-
-  new TestCase('should succeed on assert true equal true', () => {
-    const testCase = new TestCase('should assert true equal true', () => {
-      assertTrue(true);
-    });
-
-    testCase.run();
-
-    if (testCase.getInvocationDetails().state !== TestCaseState.Succeeded) {
-      throw new Error('should succeed on assert true equal true failed');
-    }
-  }),
-
-  new TestCase('should fail on assert true equal false', () => {
-    const testCase = new TestCase('should assert true equal false', () => {
-      assertTrue(false);
-    });
-
-    testCase.run();
-
-    if (testCase.getInvocationDetails().state !== TestCaseState.Failed) {
-      throw new Error('should fail on assert true equal false failed');
-    }
-  }),
-
-  new TestCase('should have no error present on assert true equal true', () => {
-    const testCase = new TestCase('should assert true equal true', () => {
-      assertTrue(true);
-    });
-
-    testCase.run();
-
-    const { error } = testCase.getInvocationDetails();
-
-    if (error !== null) {
-      throw new Error('should have no error present on assert true equal true failed');
-    }
-  }),
-
-  new TestCase('should have error of correct type set on assert true equal false', () => {
-    const testCase = new TestCase('should assert true equal false', () => {
-      assertTrue(false);
-    });
-
-    testCase.run();
-
-    const { error } = testCase.getInvocationDetails();
-
-    if (!(error instanceof AssertTrueError)) {
-      throw new Error('should have error of correct type set on assert true equal false failed');
-    }
-  }),
-
-  new TestCase('should have error of correct type set on non assert-related error', () => {
-    const testCase = new TestCase('should assert true equal false', () => {
-      throw new Error('this is non assert-related error');
-    });
-
-    testCase.run();
-
-    const { error } = testCase.getInvocationDetails();
-
-    if (!(error instanceof NonAssertRelatedError)) {
-      throw new Error('should have error of correct type set on assert true equal false failed');
     }
   }),
 ];

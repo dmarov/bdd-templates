@@ -1,4 +1,3 @@
-import { NonAssertRelatedError } from './errors/non-assert-related-error';
 import { TestCaseError } from './errors/test-case-error';
 import { TestCaseState } from './models/test-case-state';
 
@@ -24,12 +23,7 @@ export class TestCase {
       this.state = TestCaseState.Succeeded;
     } catch (e) {
       this.state = TestCaseState.Failed;
-
-      if (e instanceof TestCaseError) {
-        this.error = e;
-      } else {
-        this.error = new NonAssertRelatedError();
-      }
+      this.error = new TestCaseError();
     }
   }
 
