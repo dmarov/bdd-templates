@@ -1,4 +1,3 @@
-import { assertTrue } from './assertions/assert-true';
 import { TestCaseError } from './errors/test-case-error';
 import { TestCaseState } from './models/test-case-state';
 import { TestCase } from './test-case';
@@ -7,12 +6,8 @@ import { TestCase } from './test-case';
  * MVP
  * 1. should have "not ran" state before run
  * 2. should invoke test method
- * 3. should have non assert-related error if non assert-related error occured
- * 4. should succeed on assert true equal true
- * 5. should fail on assert true equal false
- * 6. should have no error present on assert true equal true
- * 7. should have error of correct type set on assert true equal false
- * 8. should have error of correct type set on non assert-related error
+ * 3. should failed state if error occured
+ * 4. should have error if error occured
  */
 
 /** TODO
@@ -48,9 +43,23 @@ export const tests = [
     }
   }),
 
-  new TestCase('should have non assert-related error if non assert-related error occured', () => {
-    const testCase = new TestCase('should throw non assert-related error', () => {
-      throw new Error('this is non assert-related error');
+  new TestCase('should have failed state if error occured', () => {
+    const testCase = new TestCase('should throw error', () => {
+      throw new Error('this is error');
+    });
+
+    testCase.run();
+
+    const { state } = testCase.getInvocationDetails();
+
+    if (state !== TestCaseState.Failed) {
+      throw new Error('should have failed state if error occured failed');
+    }
+  }),
+
+  new TestCase('should have error if error occured', () => {
+    const testCase = new TestCase('should throw error', () => {
+      throw new Error('this is error');
     });
 
     testCase.run();
@@ -58,7 +67,7 @@ export const tests = [
     const { error } = testCase.getInvocationDetails();
 
     if (!(error instanceof TestCaseError)) {
-      throw new Error('should have non assert-related error if non assert-related error occured failed');
+      throw new Error('should have error if error occured failed');
     }
   }),
 ];
