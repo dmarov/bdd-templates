@@ -25,3 +25,9 @@ export class TestCase {
     return this.name;
   }
 }
+
+export const assertTrue = (value: boolean) => {
+  if (value !== true) {
+    throw new Error('AssertTrue error');
+  }
+};
