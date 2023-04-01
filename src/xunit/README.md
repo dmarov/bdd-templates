@@ -1,4 +1,4 @@
-# TDD framework built with TDD practice
+# Unit testing framework built using TDD practice
 
 ## Run:
 ```

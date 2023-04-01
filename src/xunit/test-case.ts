@@ -1,5 +1,12 @@
+import { NonAssertRelatedError } from './errors/non-assert-related-error';
 import { TestCaseError } from './errors/test-case-error';
 import { TestCaseState } from './models/test-case-state';
+
+interface RunInfo {
+  name: string;
+  state: TestCaseState;
+  error: TestCaseError | null;
+}
 
 export class TestCase {
   private state: TestCaseState = TestCaseState.NotRan;
@@ -20,15 +27,17 @@ export class TestCase {
 
       if (e instanceof TestCaseError) {
         this.error = e;
+      } else {
+        this.error = new NonAssertRelatedError();
       }
     }
   }
 
-  getState(): TestCaseState {
-    return this.state;
-  }
-
-  getError(): TestCaseError | null {
-    return this.error;
+  getInvocationDetails(): RunInfo {
+    return {
+      name: this.name,
+      state: this.state,
+      error: this.error,
+    };
   }
 }
