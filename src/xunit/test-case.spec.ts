@@ -1,4 +1,5 @@
 import { assertTrue } from './assertions/assert-true';
+import { AssertTrueError } from './errors/assert-true-error';
 import { NonAssertRelatedError } from './errors/non-assert-related-error';
 import { TestCaseError } from './errors/test-case-error';
 import { TestCaseState } from './models/test-case-state';
@@ -8,11 +9,11 @@ import { TestCase } from './test-case';
  * MVP
  * 1. should have "not ran" state before run
  * 2. should invoke test method
- * 3. should assert equal boolean values
- * 4. should assert unequal boolean values
- * 5. should have no error present in case of success
- * 6. should have error of correct type set on error
- * 7. should have non assert-related error if non assert-related error occured
+ * 3. should have non assert-related error if non assert-related error occured
+ * 4. should succeed on assert true equal true
+ * 5. should fail on assert true equal false
+ * 6. should have no error present on assert true equal true
+ * 7. should have error of correct type set on assert true equal false
  */
 
 /** TODO
@@ -62,7 +63,7 @@ export const tests = [
     }
   }),
 
-  new TestCase('should assert equal boolean values', () => {
+  new TestCase('should succeed on assert true equal true', () => {
     const testCase = new TestCase('should assert true equal true', () => {
       assertTrue(true);
     });
@@ -70,11 +71,11 @@ export const tests = [
     testCase.run();
 
     if (testCase.getInvocationDetails().state !== TestCaseState.Succeeded) {
-      throw new Error('should assert equal boolean values failed');
+      throw new Error('should succeed on assert true equal true failed');
     }
   }),
 
-  new TestCase('should assert unequal boolean values', () => {
+  new TestCase('should fail on assert true equal false', () => {
     const testCase = new TestCase('should assert true equal false', () => {
       assertTrue(false);
     });
@@ -82,11 +83,11 @@ export const tests = [
     testCase.run();
 
     if (testCase.getInvocationDetails().state !== TestCaseState.Failed) {
-      throw new Error('should assert unequal boolean values failed');
+      throw new Error('should fail on assert true equal false failed');
     }
   }),
 
-  new TestCase('should have no error present in case of success', () => {
+  new TestCase('should have no error present on assert true equal true', () => {
     const testCase = new TestCase('should assert true equal true', () => {
       assertTrue(true);
     });
@@ -96,11 +97,11 @@ export const tests = [
     const { error } = testCase.getInvocationDetails();
 
     if (error !== null) {
-      throw new Error('should have no error present in case of success failed');
+      throw new Error('should have no error present on assert true equal true failed');
     }
   }),
 
-  new TestCase('should have error of correct type set on error', () => {
+  new TestCase('should have error of correct type set on assert true equal false', () => {
     const testCase = new TestCase('should assert true equal false', () => {
       assertTrue(false);
     });
@@ -109,8 +110,22 @@ export const tests = [
 
     const { error } = testCase.getInvocationDetails();
 
-    if (!(error instanceof TestCaseError)) {
-      throw new Error('should have error of correct type set on error failed');
+    if (!(error instanceof AssertTrueError)) {
+      throw new Error('should have error of correct type set on assert true equal false failed');
+    }
+  }),
+
+  new TestCase('should have error of correct type set on assert true equal false', () => {
+    const testCase = new TestCase('should assert true equal false', () => {
+      throw new Error('this is non assert-related error');
+    });
+
+    testCase.run();
+
+    const { error } = testCase.getInvocationDetails();
+
+    if (!(error instanceof NonAssertRelatedError)) {
+      throw new Error('should have error of correct type set on assert true equal false failed');
     }
   }),
 ];
