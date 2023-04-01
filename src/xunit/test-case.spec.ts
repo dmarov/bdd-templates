@@ -1,7 +1,6 @@
 import { assertTrue } from './assertions/assert-true';
 import { AssertTrueError } from './errors/assert-true-error';
 import { NonAssertRelatedError } from './errors/non-assert-related-error';
-import { TestCaseError } from './errors/test-case-error';
 import { TestCaseState } from './models/test-case-state';
 import { TestCase } from './test-case';
 
@@ -14,6 +13,7 @@ import { TestCase } from './test-case';
  * 5. should fail on assert true equal false
  * 6. should have no error present on assert true equal true
  * 7. should have error of correct type set on assert true equal false
+ * 8. should have error of correct type set on non assert-related error
  */
 
 /** TODO
@@ -115,7 +115,7 @@ export const tests = [
     }
   }),
 
-  new TestCase('should have error of correct type set on assert true equal false', () => {
+  new TestCase('should have error of correct type set on non assert-related error', () => {
     const testCase = new TestCase('should assert true equal false', () => {
       throw new Error('this is non assert-related error');
     });
