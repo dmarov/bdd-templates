@@ -24,3 +24,5 @@ ${details.error?.message}
 if (!success) {
   process.exit(1);
 }
+
+console.log('All tests passed!!!');
