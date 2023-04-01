@@ -7,7 +7,7 @@ import { TestCase } from './test-case';
  * 1. should have "not ran" state before run
  * 2. should invoke test method
  * 3. should failed state if error occured
- * 4. should have error if error occured
+ * 4. should have error of correct type if error occured
  */
 
 /** TODO
@@ -57,7 +57,7 @@ export const tests = [
     }
   }),
 
-  new TestCase('should have error if error occured', () => {
+  new TestCase('should have error of correct type if error occured', () => {
     const testCase = new TestCase('should throw error', () => {
       throw new Error('this is error');
     });
@@ -67,7 +67,7 @@ export const tests = [
     const { error } = testCase.getInvocationDetails();
 
     if (!(error instanceof TestCaseError)) {
-      throw new Error('should have error if error occured failed');
+      throw new Error('should have error of correct type if error occured failed');
     }
   }),
 ];
