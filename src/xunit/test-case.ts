@@ -10,7 +10,7 @@ interface RunInfo {
 export class TestCase {
   private state: TestCaseState = TestCaseState.NotRan;
 
-  private error: TestCaseError | null = null;
+  private error: Error | null = null;
 
   constructor(
     private readonly name: string,
@@ -23,7 +23,10 @@ export class TestCase {
       this.state = TestCaseState.Succeeded;
     } catch (e) {
       this.state = TestCaseState.Failed;
-      this.error = new TestCaseError();
+
+      if (e instanceof Error) {
+        this.error = e;
+      }
     }
   }
 

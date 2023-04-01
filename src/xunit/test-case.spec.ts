@@ -36,20 +36,6 @@ export const tests = [
     }
   }),
 
-  new TestCase('should have error of correct type if error occured', () => {
-    const testCase = new TestCase('should throw error', () => {
-      throw new Error('this is error');
-    });
-
-    testCase.run();
-
-    const { error } = testCase.getInvocationDetails();
-
-    if (!(error instanceof TestCaseError)) {
-      throw new Error('should have error of correct type if error occured failed');
-    }
-  }),
-
   new TestCase('should have succeeded state if no error occured', () => {
     const testCase = new TestCase('should be dummy', () => {
 
@@ -66,14 +52,14 @@ export const tests = [
 
   new TestCase('should have no error if no error occured', () => {
     const testCase = new TestCase('should throw error', () => {
-      throw new Error('this is error');
+
     });
 
     testCase.run();
 
     const { error } = testCase.getInvocationDetails();
 
-    if (!(error instanceof TestCaseError)) {
+    if (error !== null) {
       throw new Error('should have no error if no error occured failed');
     }
   }),
