@@ -8,17 +8,7 @@ import { TestCase } from './test-case';
  * 3. should have "not ran" state before test has been ran
  */
 
-/** TODO
- * Extra features
- * 1. add assert functions
- * 2. should have descriptive test invocation result if test with boolean assertion succeeded
- * 3. should fail test with no assertions
- * 4. run test suite
- * 5. generalize assert equal to all types
- * 6. implement file system test watcher/runner
- */
-
-const essentialTests: ReadonlyArray<TestCase> = [
+const mvpTests: ReadonlyArray<TestCase> = [
   new TestCase('should have failed state if error occured', () => {
     const testCase = new TestCase('should throw error', () => {
       throw new Error('this is error');
@@ -62,8 +52,18 @@ const essentialTests: ReadonlyArray<TestCase> = [
   }),
 ];
 
+/** TODO
+ * Extra features
+ * 1. add assert functions
+ * 2. should have descriptive test invocation result if test with boolean assertion succeeded
+ * 3. should fail test with no assertions
+ * 4. run test suite
+ * 5. generalize assert equal to all types
+ * 6. implement file system test watcher/runner
+ */
+
 const extraTests: ReadonlyArray<TestCase> = [
 
 ];
 
-export const tests: ReadonlyArray<TestCase> = [...essentialTests, ...extraTests];
+export const tests: ReadonlyArray<TestCase> = [...mvpTests, ...extraTests];
