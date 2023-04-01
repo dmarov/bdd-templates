@@ -48,6 +48,21 @@ export const tests = [
     }
   }),
 
+  new TestCase('should have non assert-related error if non assert-related error occured', () => {
+    const testCase = new TestCase('should throw non assert-related error', () => {
+      const nonAssertRelatedError = new Error('this is non assert-related error');
+      throw nonAssertRelatedError;
+    });
+
+    testCase.run();
+
+    const { error } = testCase.getInvocationDetails();
+
+    if (!(error instanceof NonAssertRelatedError)) {
+      throw new Error('should have non assert-related error if non assert-related error occured failed');
+    }
+  }),
+
   new TestCase('should assert equal boolean values', () => {
     const testCase = new TestCase('should assert true equal true', () => {
       assertBooleanEqual(true, true);
@@ -97,22 +112,6 @@ export const tests = [
 
     if (!(error instanceof TestCaseError)) {
       throw new Error('should have error of correct type set on error failed');
-    }
-  }),
-
-  new TestCase('should have non assert-related error if non assert-related error occured', () => {
-    const externalError = new Error('this is non assert-related error');
-
-    const testCase = new TestCase('should throw non assert-related error', () => {
-      throw externalError;
-    });
-
-    testCase.run();
-
-    const { error } = testCase.getInvocationDetails();
-
-    if (!(error instanceof NonAssertRelatedError)) {
-      throw new Error('should have non assert-related error if non assert-related error occured failed');
     }
   }),
 ];
