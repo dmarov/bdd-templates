@@ -74,7 +74,7 @@ const extraTests: ReadonlyArray<TestCase> = [
     const state = testCase.getState();
 
     if (state !== TestCaseState.Succeeded) {
-      throw new Error('should have succeeded state after assert true equal true');
+      throw new Error('should have succeeded state after assert true equal true failed');
     }
   }),
 
@@ -88,7 +88,7 @@ const extraTests: ReadonlyArray<TestCase> = [
     const state = testCase.getState();
 
     if (state !== TestCaseState.Failed) {
-      throw new Error('should have failed state after assert true equal false');
+      throw new Error('should have failed state after assert true equal false failed');
     }
   }),
 ];
