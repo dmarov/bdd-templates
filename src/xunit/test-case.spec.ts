@@ -9,6 +9,18 @@ import { assertTrue, TestCase } from './test-case';
  */
 
 const mvpTests: ReadonlyArray<TestCase> = [
+  new TestCase('should have "not ran" state before test has been ran', () => {
+    const testCase = new TestCase('should be dummy', () => {
+
+    });
+
+    const state = testCase.getState();
+
+    if (state !== TestCaseState.NotRan) {
+      throw new Error('should have "not ran" state before test has been ran failed');
+    }
+  }),
+
   new TestCase('should have failed state if error occured', () => {
     const testCase = new TestCase('should fail', () => {
       throw new Error('this is error');
@@ -30,20 +42,6 @@ const mvpTests: ReadonlyArray<TestCase> = [
 
     if (testCase.getState() !== TestCaseState.Succeeded) {
       throw new Error('should have succeeded state if no error occured');
-    }
-  }),
-
-  new TestCase('should have "not ran" state before test has been ran', () => {
-    const testCase = new TestCase('should be dummy', () => {
-
-    });
-
-    const state = testCase.getState();
-
-    testCase.run();
-
-    if (state !== TestCaseState.NotRan) {
-      throw new Error('should have "not ran" state before test has been ran failed');
     }
   }),
 ];
