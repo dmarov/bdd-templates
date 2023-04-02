@@ -48,13 +48,13 @@ const mvpTests: ReadonlyArray<TestCase> = [
 
 /** TODO
  * Extra features
- * 1. should have succeeded state after assert true equal true
- * 2. should have failed state after assert true equal false
- * 3. should have descriptive test invocation result if test with boolean assertion succeeded
- * 4. should fail test with no assertions
- * 5. run test suite
- * 6. generalize assert equal to all types
- * 7. implement file system test watcher/runner
+ * 1. should run test suite
+ * 2. implement file system test watcher/runner
+ * 3. should have succeeded state after assert true equal true
+ * 4. should have failed state after assert false equal true
+ * 5. should have detailed error description for failed test
+ * 6. should have warning for tests with no assertions
+ * 7. generalize assert equal to all types
  */
 
 const extraTests: ReadonlyArray<TestCase> = [
@@ -79,6 +79,24 @@ const extraTests: ReadonlyArray<TestCase> = [
 
     if (testCase.getState() !== TestCaseState.Failed) {
       throw new Error('should have failed state after assert false equal true failed');
+    }
+  }),
+
+  new TestCase('should have succeeded state if all test cases succeed', () => {
+    const testCase1 = new TestCase('should succeed', () => {
+
+    });
+
+    const testCase2 = new TestCase('should succeed', () => {
+
+    });
+
+    const testSuite = new TestSuite('TestSuite test', [testCase1, testCase2]);
+
+    testSuite.run();
+
+    if (testCase1.getState() !== TestCaseState.Succeeded && testCase2.getState() !== TestCaseState.Succeeded) {
+      throw new Error('should run test suite failed');
     }
   }),
 ];
