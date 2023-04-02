@@ -73,7 +73,7 @@ const extraTests: ReadonlyArray<TestCase> = [
   }),
 
   new TestCase('should have failed state after assert true equal false', () => {
-    const testCase = new TestCase('should assert true equal false', () => {
+    const testCase = new TestCase('should assert false equal true', () => {
       assertTrue(false);
     });
 
