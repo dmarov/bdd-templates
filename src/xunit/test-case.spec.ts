@@ -10,7 +10,7 @@ import { assertTrue, TestCase } from './test-case';
 
 const mvpTests: ReadonlyArray<TestCase> = [
   new TestCase('should have failed state if error occured', () => {
-    const testCase = new TestCase('should throw error', () => {
+    const testCase = new TestCase('should fail', () => {
       throw new Error('this is error');
     });
 
@@ -22,7 +22,7 @@ const mvpTests: ReadonlyArray<TestCase> = [
   }),
 
   new TestCase('should have succeeded state if no error occured', () => {
-    const testCase = new TestCase('should be dummy', () => {
+    const testCase = new TestCase('should not fail', () => {
 
     });
 
