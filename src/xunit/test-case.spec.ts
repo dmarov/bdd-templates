@@ -41,11 +41,11 @@ const mvpTests: ReadonlyArray<TestCase> = [
 
 /** TODO
  * Extra features
- * 1. should have descriptive test invocation result if test with boolean assertion succeeded
- * 2. should fail test with no assertions
- * 3. run test suite
- * 4. generalize assert equal to all types
- * 5. implement file system test watcher/runner
+ * 1. implement file system test watcher/runner
+ * 2. should have descriptive test invocation result if test with boolean assertion succeeded
+ * 3. should fail test with no assertions
+ * 4. run test suite
+ * 5. generalize assert equal to all types
  */
 
 const extraTests: ReadonlyArray<TestCase> = [

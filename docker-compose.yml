@@ -1,0 +1,12 @@
+version: "3.7"
+services:
+  bdd_templates:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+      args:
+        HOST_USER_ID: ${HOST_USER_ID:-1000}
+        HOST_GROUP_ID: ${HOST_GROUP_ID:-1000}
+    volumes:
+      - ./:/app
+
