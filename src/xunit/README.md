@@ -2,5 +2,5 @@
 
 ## Run:
 ```
-npm run run:xunit
+npm run test:xunit
 ```

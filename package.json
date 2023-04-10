@@ -9,7 +9,7 @@
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "lint": "eslint src/**/*.ts",
-    "run:xunit": "ts-node ./src/xunit/index.ts"
+    "test:xunit": "ts-node ./src/xunit/index.ts"
   },
   "author": "Dmitry Marov",
   "license": "ISC",
